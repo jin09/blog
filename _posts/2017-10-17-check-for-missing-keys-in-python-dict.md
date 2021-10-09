@@ -5,7 +5,7 @@ tags: idiomatic python dictionary
 ---
 
 <p align="center">
-  <img src="/assets/images/python_dict_keys.jpeg">
+  <img src="{{site.baseurl}}/assets/images/python_dict_keys.jpeg">
 </p>
 
 Dictionaries are one the most useful and widely used data structures of all time. And sooner or later we face the problem of accessing missing keys in the dictionary. Lets have a look at the problem first:
