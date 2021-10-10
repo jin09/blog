@@ -1,7 +1,7 @@
 ---
 title: Check for Missing Keys in Python Dict  
 published: true
-tags: idiomatic python dictionary
+tags: Idiomatic Python Dictionary
 ---
 
 <p align="center">
