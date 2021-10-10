@@ -180,10 +180,11 @@ Idea is to set the default return value of [dot] get method to something that is
 
 ## Verdict
 
-So we looked at 3 broad approaches to handle missing keys in a dictionary, namely:
+So we looked at 4 broad approaches to handle missing keys in a dictionary, namely:
 * key in dict
 * try/ except [KeyError]
 * dict.get()
+* idiomatic missing object
 
 ### Which one to use?
 
