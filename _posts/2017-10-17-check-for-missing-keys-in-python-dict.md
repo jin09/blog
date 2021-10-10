@@ -189,4 +189,4 @@ So we looked at 4 broad approaches to handle missing keys in a dictionary, namel
 ### Which one to use?
 
 I would say, all.  
-One must be skilled and familiar with all these methodologies. Each of these 3 broad approaches have there own advantages. Developers should understand the difference between each and should able to apply what fits best in the problem they are trying to solve.
+One must be skilled and familiar with all these methodologies. Each of these 4 broad approaches have there own advantages. Developers should understand the difference between each and should able to apply what fits best to the problem they are trying to solve.
