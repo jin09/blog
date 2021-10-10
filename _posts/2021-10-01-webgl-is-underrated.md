@@ -11,28 +11,28 @@ Our game had been sailing smoothly on Facebook Gameroom until it heard the platf
 
 ### Contents
 
-1. Why WebGL
-2. Cons of the WebGL platform  
-  2.1 Lack of threading  
-  2.2 Memory Management  
-  2.3 Lack of raw TCP/UDP sockets
-3. Build Process
-4. Dev Insights  
-  4.1 Platform dependant preprocessor directive  
-  4.2 Cross Origin Resource Sharing (CORS)  
-  4.3 Memory Considerations  
-  4.4 Threads to Coroutines  
-  4.5 Local State Management  
-  4.6 Localisation on WebGL  
-  4.7 Calling Custom Javascript with C# Adapter  
-  4.8 Measuring and Debugging Runtime Memory  
-  4.9 Caching with Indexed DB  
-  4.10 Using the right animation API on browser for better performance  
-  4.11 Analysing Unity Build Reports  
-  4.12 Using WebAssembly  
-  4.13 WebGL Templates  
-  4.14 Publishing Platform  
-5. Conclusion
+1. [Why WebGL](#why-should-you-even-consider-webgl-as-a-target-platform)
+2. [Cons of the WebGL platform](#not-so-great-side-of-webgl)  
+  2.1 [Lack of threading](#lot)  
+  2.2 [Memory Management](#mm)  
+  2.3 [Lack of raw TCP/UDP sockets](#lotcpudp)
+3. [Build Process](#build-process)
+4. [Dev Insights](#750m-headstart)  
+  4.1 [Platform dependant preprocessor directive](#platform-dependant-preprocessor-directive)  
+  4.2 [Cross Origin Resource Sharing (CORS)](#cross-origin-resource-sharing-cors)  
+  4.3 [Memory Considerations](#memory-considerations)  
+  4.4 [Threads to Coroutines](#threads-to-coroutines)  
+  4.5 [Local State Management](#local-state-management)  
+  4.6 [Localisation on WebGL](#browsers-support-all-languages-but-does-your-font-too)  
+  4.7 [Calling Custom Javascript with C# Adapter](#calling-custom-javascript-with-c-adapter)  
+  4.8 [Measuring and Debugging Runtime Memory](#measuring-and-debugging-runtime-memory)  
+  4.9 [Caching with Indexed DB](#caching-with-indexed-db)  
+  4.10 [Using the right animation API on browser for better performance](#using-the-right-animation-api-on-browser-for-better-performance)  
+  4.11 [Analysing Unity Build Reports](#analysing-unity-build-reports)  
+  4.12 [Using WebAssembly](#using-webassembly)  
+  4.13 [WebGL Templates](#webgl-templates)  
+  4.14 [Publishing Platform](#publishing-platform)  
+5. [Conclusion](#conclusion)
 
 ## Why should you even consider WebGL as a target platform?
 
@@ -50,11 +50,11 @@ The answer is pretty straightforward, it runs on all modern browsers so your gam
 
 There is a lot you can do with WebGL but at the end of the day it is managed by the browser which has its own set of limitations:
 
-1. **Lack of threading**  
+1. <div id="lot"><strong>Lack of threading</strong></div>  
 It is not possible to spawn threads to leverage multiple CPU cores for parallel processing on browsers. Instead browsers use coroutines and run everything in a single thread to achieve concurrency which is good for I/O intensive workloads. 
 If your game features are okay with this then you can convert your threads to coroutines and have your game running on WebGL with a slight compromise on performance.
 
-2. **Memory Management**  
+2. <div id="mm"><strong>Memory Management</strong></div>  
 Unlike native apps you get very little control over how memory is managed on web browsers. Unity creates a heap of fixed size (as specified by the developer) in memory which requires a contiguous block. It uses this heap to store all its runtime objects.
 Okay hold, there are a couple of problems here:  
     &nbsp;&nbsp;2.1 Max size of this heap cannot exceed 2GB because beyond that 32-bit systems will overflow  
@@ -63,7 +63,7 @@ Okay hold, there are a couple of problems here:
     &nbsp;&nbsp;2.4 This heap size has to be predetermined at build time which can get a little tricky to figure out.  
     &nbsp;&nbsp;2.5 Garbage collection happens after a frame completes, it doesn’t get a chance to run between the frames, so it increases the chances of overflow if there is a memory intensive operation in a single frame cycle
 
-3. **Lack of raw TCP/UDP sockets on browsers**   
+3. <div id="lotcpudp"><strong>Lack of raw TCP/UDP sockets on browsers</strong></div>   
 This is not that big a problem to be honest but adds on to the development effort. There are wrappers available that will help you convert your TCP code to Websockets which is supported by browsers. Websockets is an application layer protocol built on top of TCP so please expect some perf drop when using websockets compared to raw TCP sockets. 
 Another application layer protocol supported by browsers is WebRTC used for P2P communication. It supports both TCP and UDP but sees most of its application in audio/video streaming. You can try to leverage WebRTC but it's a risky territory since the protocol is quite complex.
 For our game we were already using HTTP for all our communication so we didn’t have to get our hands dirty here.  
