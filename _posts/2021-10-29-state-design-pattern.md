@@ -1,5 +1,5 @@
 ---
-title: Elevator State Design Pattern  
+title: State Design Pattern  
 published: true
 tags: LLD Design-Patterns State Python Idiomatic
 ---
@@ -15,7 +15,7 @@ Let's understand **State Design Pattern** with the help of an example problem st
 ## Requirements
 
 Let's say we want to design a single elevator system for a building with N floors (ignore 2 elevators as shown in the diagram).  
-Each floor has 2 buttons - UP and DOWN which the users can press according to their convenience.
+Each floor has 2 buttons - UP and DOWN which the users can press based on whether they want to go up or down.
 
 <p align="center">
   <img height="500px" src="{{site.baseurl}}/assets/images/elevator-system.png">
@@ -196,7 +196,7 @@ Huge method blocks, so many if else statements already make this implementation 
 After a couple of weeks or months if I have to modify the behaviour, I'll have to understand the entire piece and make relevant changes which will make this piece even more complex than it already is.  
 
 
-## An Elegant Design (2nd Attempt)
+## A Better Design (2nd Attempt)
 
 This is where we take a step back and devise a design strategy before directly diving into writing code.  
 If we closely take a look, an Elevator is a Finite State Machine (FSM). It can be in exactly one state at any given instant.  
@@ -530,4 +530,4 @@ tail -f log_file.log
 State Pattern is an amazingly neat way of modelling your FSMs. If you have too many if else statements or switch statements in your logic then you might be able to apply this design pattern to simplify huge methods. But again, its not a silver bullet, use it only when you feel it gives a better structure to your logic.  
 It's a little tricky to grasp at first until you implement your own, so go write your own taking this article as your reference.  
 
-**Hola!**
+**Stay Frosty!**
