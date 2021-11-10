@@ -519,7 +519,7 @@ To run:
 python3 elevator.py
 ```
 
-The program outputs the logs on a separate log file. To view:
+The program outputs the logs on a separate log file. To view elevator movement in realtime:
 
 ```
 tail -f log_file.log
